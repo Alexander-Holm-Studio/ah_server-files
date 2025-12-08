@@ -1,0 +1,18 @@
+Locales['da'] = {
+  ['shop'] = 'butik',
+  ['shops'] = 'butikker',
+  ['press_menu'] = 'tryk [%s] for at åbne ~g~butikken.',
+  ['shop_item'] = '$%s',
+  ['bought'] = 'Du Har Købt ~b~%sx %s~s~ for ~b~$%s',
+  ['not_enough'] = 'du har ~r~ikke~s~ nok penge, du mangler ~b~$%s!',
+  ['player_cannot_hold'] = 'du har ~r~ikke~s~ nok fri plads i din inventory!',
+  ['shop_confirm'] = 'køb %sx %s for $%s?',
+  ['no'] = 'nej',
+  ['yes'] = 'ja',
+  ['amount'] = 'Antal',
+  ['amount_placeholder'] = 'Antal du vil købe',
+  ['confirm'] = 'Bekræft',
+  ['purchase'] = 'Køb',
+  ['bread'] = 'Brød',
+  ['water'] = 'Vand',
+}

@@ -1,0 +1,28 @@
+{
+    "ui": {
+        "join": "Tilslut til frekvens",
+        "leave": "Sluk",
+        "preset_set": "Gem forudindstilling",
+        "preset_one": "Forudindstilling #1",
+        "preset_two": "Forudindstilling #2",
+        "volume_mute": "Mute",
+        "volume_up": "Lydstyrke op",
+        "volume_down": "Lydstyrke ned"
+    },
+    "command_open": "Åbner radio UI",
+    "command_clear": "Rydder alle dine frekvens forudindstillinger",
+    "keymap_open": "Åbn radio UI",
+    "channel_join": "Tilsluttet til frekvens %s MHz",
+    "channel_unavailable": "Denne frekvens er ikke tilgængelig",
+    "channel_disconnect": "Du har afbrudt forbindelsen til radioen",
+    "volume_mute": "Radio muted",
+    "volume_unmute": "Radio unmuted",
+    "volume_up": "Lydstyrke øget til %s%%",
+    "volume_down": "Lydstyrke reduceret til %s%%",
+    "volume_max": "Maksimal lydstyrke nået",
+    "volume_min": "Minimum lydstyrke nået",
+    "preset_not_found": "Ingen gemt forudindstilling fundet",
+    "preset_choose": "Vælg en forudindstilling (1 eller 2) for at gemme den nuværende frekvens.",
+    "preset_set": "Du har indstillet forudindstillingen til %s MHz",
+    "preset_clear": "Radio forudindstillinger ryddet"
+}

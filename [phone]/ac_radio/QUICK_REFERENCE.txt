@@ -1,0 +1,90 @@
+╔══════════════════════════════════════════════════════════════════╗
+║              AC RADIO - PMA-VOICE INTEGRATION                    ║
+║                     QUICK REFERENCE                              ║
+╚══════════════════════════════════════════════════════════════════╝
+
+✅ STATUS: FULLY CONFIGURED & READY
+
+┌──────────────────────────────────────────────────────────────────┐
+│ PLAYER CONTROLS                                                  │
+├──────────────────────────────────────────────────────────────────┤
+│  Use Radio Item     │  Open radio from ox_inventory              │
+│  Press & Hold Z     │  Talk on radio (Push-to-Talk)             │
+│  Enter Frequency    │  Type frequency like 100.00 and connect   │
+│  Volume +/-         │  Adjust radio volume                       │
+│  Mute Button        │  Toggle radio mute                         │
+│  Preset 1 & 2       │  Save/load favorite frequencies           │
+└──────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────┐
+│ ADMIN COMMANDS                                                   │
+├──────────────────────────────────────────────────────────────────┤
+│  /giveitem [id] radio 1  │  Give player a radio                 │
+│  /radio:clear            │  Clear your saved presets            │
+└──────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────┐
+│ FREQUENCY RANGES                                                 │
+├──────────────────────────────────────────────────────────────────┤
+│  0.00 - 9.99         │  Available to all players                │
+│  10.00               │  RESTRICTED: Police only                 │
+│  11.00               │  RESTRICTED: Police grade 2+             │
+│  12.00 - 1000.00     │  Available to all players                │
+└──────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────┐
+│ FEATURES ENABLED                                                 │
+├──────────────────────────────────────────────────────────────────┤
+│  ✅ Radio voice effect (realistic radio sound)                   │
+│  ✅ Radio animation (character holds radio)                      │
+│  ✅ Volume control (0-100%)                                      │
+│  ✅ Frequency presets (save favorites)                           │
+│  ✅ Job restrictions (police channels)                           │
+│  ✅ Auto-disconnect without radio item                           │
+│  ✅ ox_inventory integration                                     │
+│  ✅ ESX framework support                                        │
+└──────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────┐
+│ HOW RADIO WORKS                                                  │
+├──────────────────────────────────────────────────────────────────┤
+│  1. Player needs "radio" item in inventory                       │
+│  2. Use the item to open radio interface                         │
+│  3. Type a frequency and click "Connect"                         │
+│  4. Press & hold Z to talk on that frequency                     │
+│  5. All players on same frequency will hear you                  │
+│  6. Radio has realistic effect (sounds like real radio)          │
+└──────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────┐
+│ TROUBLESHOOTING                                                  │
+├──────────────────────────────────────────────────────────────────┤
+│  Can't hear on radio?   │  Both players must be on SAME freq    │
+│  No radio animation?    │  Check voice_enableRadioAnim convar   │
+│  Radio won't open?      │  Check F8 console for errors          │
+│  No radio item?         │  Run install_radio_item.sql           │
+└──────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────┐
+│ CONVARS CONFIGURED                                               │
+├──────────────────────────────────────────────────────────────────┤
+│  voice_enableRadioAnim 1       │  ✅ Enabled                     │
+│  voice_enableRadios true       │  ✅ Enabled                     │
+│  voice_enableSubmix true       │  ✅ Enabled                     │
+│  voice_useNativeAudio true     │  ✅ Enabled                     │
+│  voice_defaultRadio 0          │  ✅ Disabled by default         │
+└──────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────┐
+│ NEXT STEPS                                                       │
+├──────────────────────────────────────────────────────────────────┤
+│  1. Restart your FiveM server                                    │
+│  2. Run install_radio_item.sql in your database (if needed)     │
+│  3. Give yourself a radio: /giveitem [your_id] radio 1          │
+│  4. Test with another player on same frequency                   │
+└──────────────────────────────────────────────────────────────────┘
+
+╔══════════════════════════════════════════════════════════════════╗
+║  Documentation: https://docs.acscripts.dev/radio                ║
+║  Configured: December 2, 2025                                    ║
+╚══════════════════════════════════════════════════════════════════╝

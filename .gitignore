@@ -1,0 +1,37 @@
+# Node.js dependencies and package files
+node_modules/
+**/node_modules/
+package-lock.json
+**/package-lock.json
+package.json
+**/package.json
+yarn.lock
+**/yarn.lock
+
+# Logs
+logs/
+**/logs/
+*.log
+**/*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temp files
+tmp/
+**/tmp/
+temp/
+**/temp/
+*.tmp
+**/*.tmp
+.DS_Store
+Thumbs.db
+
+# OS generated files
+*.swp
+*.swo
+*.bak
+*.old
+*.orig
+drp_carpack
+drp_carpack/*

@@ -1,0 +1,123 @@
+{
+  "name": "Kota V",
+  "timezone": "Asia/Jakarta",
+  "logo": "./images/kota-v.png",
+  "LATEST_NEWS": {
+    "AUTHOR": "Reporter",
+    "IMG_URL": "https://i.ytimg.com/vi/0GZKDlppO2g/maxresdefault.jpg",
+    "content": "I en bekymrende udvikling har Los Santos oplevet en kraftig stigning i kriminalitet den seneste uge, hvilket har efterladt borgere og politi i høj alarmberedskab.",
+    "more_updates": "Besøg venligst reporterens kontor og følg med for flere opdateringer, efterhånden som historien udvikler sig."
+  },
+  "INETMAX": {
+    "IS_DISABLE_TOPUP": false,
+    "PRICE_PER_GB": 100,
+    "MIN_TOPUP": 1,
+    "BUY": [
+      {
+        "text": "5GB",
+        "total": 5
+      },
+      {
+        "text": "25GB",
+        "total": 25
+      },
+      {
+        "text": "100GB",
+        "total": 100
+      }
+    ]
+  },
+  "NEWS": {
+    "ALLOWED_JOBS": ["reporter", "government", "ambulance"]
+  },
+  "SERVICES": {
+    "ALLOWED_JOBS": [
+      "goverment",
+      "police",
+      "ambulance",
+      "realestate",
+      "taxi",
+      "burgershot",
+      "kfc"
+    ]
+  },
+  "WALLET": {
+    "MIN_TRANSFER": 20000
+  },
+  "APPS": {
+    "MENU_LOCKSCREEN": "Låseskærm",
+    "MENU_EMAIL": "E-mail",
+    "MENU_ADS": "Annoncer",
+    "MENU_BANK": "Pung",
+    "MENU_HOUSE": "Huse",
+    "MENU_SERVICE": "Tjenester",
+    "MENU_CAMERA": "Kamera",
+    "MENU_GALLERY": "Billeder",
+    "MENU_RACE": "Løb",
+    "MENU_PHONE": "Telefon",
+    "MENU_MESSAGE": "Beskeder",
+    "MENU_LOOPS": "Loops",
+    "MENU_SETTING": "Indstillinger",
+    "MENU_CONTACT": "Kontakter",
+    "MENU_DEFAULT": "Hjem",
+    "MENU_LOVY": "Lovy",
+    "MENU_PLAYTV": "Play TV",
+    "MENU_MESSAGE_CHATTING": "Chat",
+    "MENU_EMAIL_DETAIL": "E-mail detaljer",
+    "MENU_INCOMING_CALL_NOTIFICATION": "Indgående opkald",
+    "MENU_START_CALL_NOTIFICATION": "Ringer op...",
+    "MENU_NEW_MESSAGE_NOTIFICATION": "Ny besked",
+    "MENU_INCALL": "I opkald",
+    "MENU_NEWS": "Nyheder",
+    "MENU_NEW_NEWS_NOTIFICATION": "Reporter Nyheder",
+    "MENU_INTERNAL_NOTIFICATION": "Notifikation"
+  },
+  "MENUS": [
+    {
+      "icon": "./images/contact.svg",
+      "label": "Kontakter"
+    },
+    {
+      "icon": "./images/mail.svg",
+      "label": "E-mail"
+    },
+    {
+      "icon": "./images/ads.svg",
+      "label": "Annoncer"
+    },
+    {
+      "icon": "./images/houses.svg",
+      "label": "Huse"
+    },
+    {
+      "icon": "./images/wallet.svg",
+      "label": "Pung"
+    },
+    {
+      "icon": "./images/news.svg",
+      "label": "Nyheder"
+    },
+    {
+      "icon": "./images/gallery.svg",
+      "label": "Billeder"
+    }
+  ],
+  "BOTTOM_MENUS": [
+    {
+      "icon": "./images/phone.svg",
+      "label": "Telefon"
+    },
+    {
+      "icon": "./images/message.svg",
+      "label": "Beskeder"
+    },
+    {
+      "icon": "./images/camera.svg",
+      "label": "Kamera"
+    },
+    {
+      "icon": "./images/setting.svg",
+      "label": "Indstillinger"
+    }
+  ]
+}
