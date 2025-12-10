@@ -137,26 +137,21 @@ return {
 		label = 'Lockpick',
 		weight = 160,
 	},
-
-	['phone'] = {
-		label = 'Phone',
-		weight = 190,
-		stack = false,
-		consume = 0,
-		client = {
-			add = function(total)
-				if total > 0 then
-					pcall(function() return exports.npwd:setPhoneDisabled(false) end)
-				end
-			end,
-
-			remove = function(total)
-				if total < 1 then
-					pcall(function() return exports.npwd:setPhoneDisabled(true) end)
-				end
-			end
-		}
-	},
+["phone"] = {
+    label = "Phone",
+    weight = 190,
+    stack = false,
+    consume = 0,
+    client = {
+        export = "lb-phone.UsePhoneItem",
+        remove = function()
+            TriggerEvent("lb-phone:itemRemoved")
+        end,
+        add = function()
+            TriggerEvent("lb-phone:itemAdded")
+        end
+    }
+},
 
 	['money'] = {
 		label = 'Money',
@@ -186,7 +181,7 @@ return {
 			notification = 'You drank some refreshing water'
 		}
 	},
-	
+
 	['radio'] = {
 		label = 'Radio',
 		weight = 100,
@@ -544,5 +539,203 @@ return {
 		weight = 1,
 		stack = true,
 		close = true,
+	},
+
+	["classic_phone"] = {
+		label = "Classic Phone",
+		weight = 700,
+		stack = false,
+		close = true,
+		description = "They say that Quasar Smartphone is the same as an iPhone, what do you think?",
+		client = { image = "classic_phone.png" }
+	},
+
+	["black_phone"] = {
+		label = "Black Phone",
+		weight = 700,
+		stack = false,
+		close = true,
+		description = "They say that Quasar Smartphone is the same as an iPhone, what do you think?",
+		client = { image = "black_phone.png" }
+	},
+
+	["blue_phone"] = {
+		label = "Blue Phone",
+		weight = 700,
+		stack = false,
+		close = true,
+		description = "They say that Quasar Smartphone is the same as an iPhone, what do you think?",
+		client = { image = "blue_phone.png" }
+	},
+
+	["gold_phone"] = {
+		label = "Gold Phone",
+		weight = 700,
+		stack = false,
+		close = true,
+		description = "They say that Quasar Smartphone is the same as an iPhone, what do you think?",
+		client = { image = "gold_phone.png" }
+	},
+
+	["red_phone"] = {
+		label = "Red Phone",
+		weight = 700,
+		stack = false,
+		close = true,
+		description = "They say that Quasar Smartphone is the same as an iPhone, what do you think?",
+		client = { image = "red_phone.png" }
+	},
+
+	["green_phone"] = {
+		label = "Green Phone",
+		weight = 700,
+		stack = false,
+		close = true,
+		description = "They say that Quasar Smartphone is the same as an iPhone, what do you think?",
+		client = { image = "green_phone.png" }
+	},
+
+	["greenlight_phone"] = {
+		label = "Green Light Phone",
+		weight = 700,
+		stack = false,
+		close = true,
+		description = "They say that Quasar Smartphone is the same as an iPhone, what do you think?",
+		client = { image = "greenlight_phone.png" }
+	},
+
+	["pink_phone"] = {
+		label = "Pink Phone",
+		weight = 700,
+		stack = false,
+		close = true,
+		description = "They say that Quasar Smartphone is the same as an iPhone, what do you think?",
+		client = { image = "pink_phone.png" }
+	},
+
+	["white_phone"] = {
+		label = "White Phone",
+		weight = 700,
+		stack = false,
+		close = true,
+		description = "They say that Quasar Smartphone is the same as an iPhone, what do you think?",
+		client = { image = "white_phone.png" }
+	},
+
+	["phone_hack"] = {
+		label = "Phone Hack",
+		weight = 300,
+		stack = false,
+		close = true,
+		description = "With this chip, you can access hidden areas of Discord.",
+		client = { image = "phone_hack.png" }
+	},
+
+	["phone_module"] = {
+		label = "Phone Module",
+		weight = 300,
+		stack = false,
+		close = true,
+		description = "It seems that we can fix a wet phone with this module, interesting.",
+		client = { image = "phone_module.png" }
+	},
+
+	["powerbank"] = {
+		label = "Power Bank",
+		weight = 150,
+		stack = false,
+		close = true,
+		description = "Incredible portable charger!",
+		client = { image = "powerbank.png" }
+	},
+
+	["wet_phone"] = {
+		label = "Wet Phone",
+		weight = 700,
+		stack = false,
+		close = true,
+		description = "Did you really think that swimming in the ocean with your phone was a good idea?",
+		client = { image = "wet_classic_phone.png" }
+	},
+
+	["wet_classic_phone"] = {
+		label = "Wet Classic Phone",
+		weight = 700,
+		stack = false,
+		close = true,
+		description = "Did you really think that swimming in the ocean with your phone was a good idea?",
+		client = { image = "wet_classic_phone.png" }
+	},
+
+	["wet_black_phone"] = {
+		label = "Wet Black Phone",
+		weight = 700,
+		stack = false,
+		close = true,
+		description = "Did you really think that swimming in the ocean with your phone was a good idea?",
+		client = { image = "wet_black_phone.png" }
+	},
+
+	["wet_blue_phone"] = {
+		label = "Wet Blue Phone",
+		weight = 700,
+		stack = false,
+		close = true,
+		description = "Did you really think that swimming in the ocean with your phone was a good idea?",
+		client = { image = "wet_blue_phone.png" }
+	},
+
+	["wet_gold_phone"] = {
+		label = "Wet Gold Phone",
+		weight = 700,
+		stack = false,
+		close = true,
+		description = "Did you really think that swimming in the ocean with your phone was a good idea?",
+		client = { image = "wet_gold_phone.png" }
+	},
+
+	["wet_red_phone"] = {
+		label = "Wet Red Phone",
+		weight = 700,
+		stack = false,
+		close = true,
+		description = "Did you really think that swimming in the ocean with your phone was a good idea?",
+		client = { image = "wet_red_phone.png" }
+	},
+
+	["wet_green_phone"] = {
+		label = "Wet Green Phone",
+		weight = 700,
+		stack = false,
+		close = true,
+		description = "Did you really think that swimming in the ocean with your phone was a good idea?",
+		client = { image = "wet_green_phone.png" }
+	},
+
+	["wet_greenlight_phone"] = {
+		label = "Wet Green Light Phone",
+		weight = 700,
+		stack = false,
+		close = true,
+		description = "Did you really think that swimming in the ocean with your phone was a good idea?",
+		client = { image = "wet_greenlight_phone.png" }
+	},
+
+	["wet_pink_phone"] = {
+		label = "Wet Pink Phone",
+		weight = 700,
+		stack = false,
+		close = true,
+		description = "Did you really think that swimming in the ocean with your phone was a good idea?",
+		client = { image = "wet_pink_phone.png" }
+	},
+
+	["wet_white_phone"] = {
+		label = "Wet White Phone",
+		weight = 700,
+		stack = false,
+		close = true,
+		description = "Did you really think that swimming in the ocean with your phone was a good idea?",
+		client = { image = "wet_white_phone.png" }
 	},
 }

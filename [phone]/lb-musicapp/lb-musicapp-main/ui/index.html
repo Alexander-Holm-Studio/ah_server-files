@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Custom App Template</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="colors.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet" />
+</head>
+
+<style>
+    .button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    /* make icon bigger */
+    .button ion-icon {
+        font-size: 20px;
+    }
+
+    .volume-controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+
+    .volume-controls .slider {
+        -webkit-appearance: none;
+        width: 70%;
+        padding: 0;
+        height: 5px;
+        border-radius: 5px;
+        background: #d3d3d3;
+        outline: none;
+        -webkit-transition: .2s;
+        transition: opacity .2s;
+    }
+
+    .volume-controls .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background: #26b4df;
+        cursor: pointer;
+    }
+
+    #video-thumbnail {
+        width: 300px;
+        height: 170px;
+        border-radius: 5px;
+        display: none;
+        margin: 10px auto 0 auto;
+        object-fit: cover;
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+    }
+
+    #thumbnail-placeholder {
+        width: 300px;
+        height: 170px;
+        border-radius: 5px;
+        background: #222;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 10px auto 0 auto;
+        font-size: 12px;
+        text-align: center;
+        text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+        user-select: none;
+    }
+
+    #video-title {
+        margin-top: 5px;
+        font-weight: 600;
+        color: #333;
+        text-align: center;
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 14px;
+        word-break: break-word;
+    }
+
+    /* Playlist styles */
+    #playlistView {
+        display: none;
+    }
+
+    .playlist-container {
+        max-height: 300px;
+        overflow-y: auto;
+        margin-top: 10px;
+        width: 90%;
+        max-width: 400px;
+    }
+
+    .playlist-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px;
+        margin-bottom: 8px;
+        background-color: var(--background-highlight);
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .playlist-item:hover {
+        filter: brightness(1.2);
+    }
+
+    .playlist-item.playing {
+        background-color: #26b4df;
+    }
+
+    .playlist-item img {
+        width: 40px;
+        height: 24px;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+    .playlist-item-info {
+        flex: 1;
+        overflow: hidden;
+    }
+
+    .playlist-item-title {
+        font-size: 16px;
+        font-weight: 500;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: white;
+        text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+    }
+
+    .playlist-item-remove {
+        background: #ff4444;
+        color: white;
+        border: none;
+        padding: 8px;
+        border-radius: 4px;
+        font-size: 18px;
+        cursor: pointer;
+        height: 32px;
+        width: 32px;
+        min-width: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .playlist-item-remove:hover {
+        background: #cc0000;
+    }
+
+    .playlist-item-remove ion-icon {
+        font-size: 20px;
+    }
+
+    .playlist-empty {
+        text-align: center;
+        color: white;
+        padding: 20px;
+        font-size: 12px;
+        text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+    }
+
+    .playlist-help {
+        text-align: center;
+        color: white;
+        padding: 10px;
+        font-size: 14px;
+        font-weight: 600;
+        text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+        margin-bottom: 10px;
+    }
+
+    .playlist-controls {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .playlist-controls button {
+        width: 6.5rem;
+        height: 2.5rem;
+        font-size: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+    }
+
+    .playlist-controls button ion-icon {
+        font-size: 16px;
+    }
+
+    #addToPlaylistBtn {
+        background-color: #26b4df;
+        color: white;
+        margin-top: 5px;
+    }
+
+    #playlistToggle {
+        margin-top: 10px;
+    }
+
+    #backToPlayer {
+        width: 14rem;
+    }
+
+    /* Center playlist view content */
+    #playlistView .header {
+        margin-bottom: 1rem;
+    }
+</style>
+
+<body>
+    <div id="phone-wrapper">
+        <div class="app" id="content">
+            <div class="app-wrapper">
+                <!-- Main Player View -->
+                <div id="playerView">
+                    <div class="header" style="text-align: center;">
+                        <div class="title">uTune Music</div>
+                        <div id="thumbnail-placeholder">Nothing is currently playing</div>
+                        <img id="video-thumbnail" src="" alt="Video Thumbnail" />
+                        <div id="video-title"></div>
+                    </div>
+                    <div class="button-wrapper" style="align-items: center;">
+                        <input id="youtubeUrl" type="text" placeholder="Music URL" />
+                        <button id="addToPlaylistBtn" class="button" style="display: none; width: 200px; margin-left: auto; margin-right: auto;">
+                            <ion-icon name="add-circle-outline"></ion-icon>Add to Playlist
+                        </button>
+                        <div style="display: flex; flex-direction: column; gap: 10px; align-items: center;">
+                            <button id="pauseButton" class="button" style="display: none;"><ion-icon
+                                    name="pause-outline"></ion-icon>Pause</button>
+                            <button id="playButton" class="button"><ion-icon name="play-outline"></ion-icon>Play</button>
+                        </div>
+                        <div class="music-controls">
+                            <div class="volume-controls">
+                                <input type="range" min="0" max="100" value="50" class="slider" id="volumeSlider" step="5">
+                                <div class="volume-info">Volume: 50%</div>
+                            </div>
+                        </div>
+                        <button id="playlistToggle" class="button">
+                            <ion-icon name="list-outline"></ion-icon>Playlist
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Playlist View -->
+                <div id="playlistView">
+                    <div class="header" style="text-align: center;">
+                        <div class="title">My Playlist</div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+                        <div class="playlist-help">Click any song to start playing! 🎧😌🎶</div>
+                        <div class="playlist-container" id="playlistContainer">
+                            <div class="playlist-empty">Your playlist is empty</div>
+                        </div>
+                        <div class="playlist-controls">
+                            <button id="playPrevBtn" class="button">
+                                <ion-icon name="play-skip-back-outline"></ion-icon>Previous
+                            </button>
+                            <button id="stopFromPlaylistBtn" class="button" style="display: none; background-color: #ff4444;">
+                                <ion-icon name="stop-outline"></ion-icon>Stop
+                            </button>
+                            <button id="playNextBtn" class="button">
+                                <ion-icon name="play-skip-forward-outline"></ion-icon>Next
+                            </button>
+                        </div>
+                        <button id="backToPlayer" class="button">
+                            <ion-icon name="musical-notes-outline"></ion-icon>Music Player
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="dev.js"></script>
+    <script>
+        const resName = location.host;
+        const playButton = $('#playButton');
+        const pauseButton = $('#pauseButton');
+        const volumeSlider = $('#volumeSlider');
+        const volumeInfo = $('.volume-info');
+        const addToPlaylistBtn = $('#addToPlaylistBtn');
+        const playlistToggle = $('#playlistToggle');
+        const backToPlayer = $('#backToPlayer');
+        const playerView = $('#playerView');
+        const playlistView = $('#playlistView');
+        const playlistContainer = $('#playlistContainer');
+
+        const videoThumbnail = $('#video-thumbnail');
+        const videoTitle = $('#video-title');
+        const thumbnailPlaceholder = $('#thumbnail-placeholder');
+
+        let isPlaying = false;
+        let isPaused = false;
+        let currentVideoInfo = {};
+        let playlist = [];
+        let currentPlaylistIndex = -1;
+
+        function updateVideoInfo(youtubeUrl) {
+            if (!youtubeUrl) {
+                videoThumbnail.hide();
+                thumbnailPlaceholder.show();
+                videoTitle.text('');
+                addToPlaylistBtn.hide();
+                currentVideoInfo = {};
+                return;
+            }
+
+            // Extract video ID from URL
+            const videoIdMatch = youtubeUrl.match(/(?:youtu\.be\/|youtube\.com.*v=)([^&]+)/);
+            if (!videoIdMatch) {
+                videoThumbnail.hide();
+                thumbnailPlaceholder.show();
+                videoTitle.text('');
+                addToPlaylistBtn.hide();
+                currentVideoInfo = {};
+                return;
+            }
+            const videoId = videoIdMatch[1];
+
+            // Thumbnail URL pattern
+            const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+            videoThumbnail.attr('src', thumbnailUrl).show();
+            thumbnailPlaceholder.hide();
+
+            // Fetch video title from YouTube oEmbed API (no API key required)
+            $.getJSON(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoId}&format=json`, (data) => {
+                videoTitle.text(data.title);
+                currentVideoInfo = {
+                    url: youtubeUrl,
+                    title: data.title,
+                    thumbnail: thumbnailUrl
+                };
+                
+                // Check if already in playlist
+                const inPlaylist = playlist.some(item => item.url === youtubeUrl);
+                addToPlaylistBtn.toggle(!inPlaylist);
+            }).fail(() => {
+                videoTitle.text('Unknown Title');
+                currentVideoInfo = {
+                    url: youtubeUrl,
+                    title: 'Unknown Title',
+                    thumbnail: thumbnailUrl
+                };
+                addToPlaylistBtn.show();
+            });
+        }
+
+        function renderPlaylist() {
+            if (playlist.length === 0) {
+                playlistContainer.html('<div class="playlist-empty">Your playlist is empty</div>');
+                $('.playlist-help').hide();
+                $('#stopFromPlaylistBtn').hide();
+                return;
+            }
+
+            $('.playlist-help').show();
+            
+            // Show/hide stop button based on playing state
+            if (isPlaying) {
+                $('#stopFromPlaylistBtn').show();
+            } else {
+                $('#stopFromPlaylistBtn').hide();
+            }
+            
+            let html = '';
+            playlist.forEach((item, index) => {
+                const isCurrentlyPlaying = isPlaying && item.url === $('#youtubeUrl').val();
+                html += `
+                    <div class="playlist-item ${isCurrentlyPlaying ? 'playing' : ''}" data-index="${index}">
+                        <img src="${item.thumbnail}" alt="Thumbnail">
+                        <div class="playlist-item-info">
+                            <div class="playlist-item-title">${item.title}</div>
+                        </div>
+                        <button class="playlist-item-remove" data-index="${index}">
+                            <ion-icon name="close"></ion-icon>
+                        </button>
+                    </div>
+                `;
+            });
+            playlistContainer.html(html);
+        }
+
+        // View toggling
+        playlistToggle.click(() => {
+            playerView.hide();
+            playlistView.show();
+            renderPlaylist();
+        });
+
+        backToPlayer.click(() => {
+            playlistView.hide();
+            playerView.show();
+        });
+
+        // Add to playlist
+        addToPlaylistBtn.click(() => {
+            if (currentVideoInfo.url) {
+                fetchNui('addToPlaylist', currentVideoInfo).then((data) => {
+                    if (data.success) {
+                        playlist = data.playlist;
+                        addToPlaylistBtn.hide();
+                        sendNotification({ title: "Added to playlist!" });
+                    }
+                });
+            }
+        });
+
+        // Playlist item interactions
+        $(document).on('click', '.playlist-item', function(e) {
+            if (!$(e.target).hasClass('playlist-item-remove') && !$(e.target).closest('.playlist-item-remove').length) {
+                const index = parseInt($(this).data('index')) + 1; // Convert to 1-based index
+                fetchNui('playFromPlaylist', { index: index }).then(() => {
+                    const item = playlist[index - 1];
+                    $('#youtubeUrl').val(item.url);
+                    updateVideoInfo(item.url);
+                    isPlaying = true;
+                    isPaused = false;
+                    playButton.html('<ion-icon name="stop-outline"></ion-icon>Stop');
+                    pauseButton.show();
+                    currentPlaylistIndex = index - 1;
+                    
+                    // Stay on playlist view and re-render to update highlight
+                    renderPlaylist();
+                });
+            }
+        });
+
+        $(document).on('click', '.playlist-item-remove', function(e) {
+            e.stopPropagation();
+            const index = parseInt($(this).data('index')) + 1; // Convert to 1-based index
+            fetchNui('removeFromPlaylist', { index: index }).then((data) => {
+                if (data.success) {
+                    playlist = data.playlist;
+                    renderPlaylist();
+                    sendNotification({ title: "Removed from playlist!" });
+                }
+            });
+        });
+
+        // Playlist controls
+        $('#playNextBtn').click(() => {
+            if (playlist.length > 0) {
+                fetchNui('playNext').then(() => {
+                    currentPlaylistIndex = (currentPlaylistIndex + 1) % playlist.length;
+                    const item = playlist[currentPlaylistIndex];
+                    $('#youtubeUrl').val(item.url);
+                    updateVideoInfo(item.url);
+                    isPlaying = true;
+                    isPaused = false;
+                    playButton.html('<ion-icon name="stop-outline"></ion-icon>Stop');
+                    pauseButton.show();
+                    
+                    // Stay on playlist view and update highlight
+                    renderPlaylist();
+                });
+            }
+        });
+
+        $('#playPrevBtn').click(() => {
+            if (playlist.length > 0) {
+                fetchNui('playPrevious').then(() => {
+                    currentPlaylistIndex = currentPlaylistIndex <= 0 ? playlist.length - 1 : currentPlaylistIndex - 1;
+                    const item = playlist[currentPlaylistIndex];
+                    $('#youtubeUrl').val(item.url);
+                    updateVideoInfo(item.url);
+                    isPlaying = true;
+                    isPaused = false;
+                    playButton.html('<ion-icon name="stop-outline"></ion-icon>Stop');
+                    pauseButton.show();
+                    
+                    // Stay on playlist view and update highlight
+                    renderPlaylist();
+                });
+            }
+        });
+
+        // Listen for song changes from Lua
+        window.addEventListener("message", (e) => {
+            if (e.data == "componentsLoaded") {
+                fetchNui('getData').then((data) => {
+                    const { youtubeUrl, isPlay, volume, playlist: savedPlaylist, currentPlaylistIndex: savedIndex } = data;
+                    $('#youtubeUrl').val(youtubeUrl);
+                    isPlaying = isPlay;
+                    isPaused = false;
+                    playlist = savedPlaylist || [];
+                    currentPlaylistIndex = savedIndex || -1;
+
+                    volumeSlider.val(volume);
+                    volumeInfo.text(`Volume: ${volume}%`);
+
+                    updateVideoInfo(youtubeUrl);
+
+                    if (isPlaying) {
+                        playButton.html('<ion-icon name="stop-outline"></ion-icon>Stop');
+                        pauseButton.show();
+                    } else {
+                        playButton.html('<ion-icon name="play-outline"></ion-icon>Play');
+                        pauseButton.hide();
+                    }
+                });
+            } else if (e.data.action === "songChanged") {
+                // Auto-play next song notification from Lua
+                const { url, index } = e.data;
+                $('#youtubeUrl').val(url);
+                updateVideoInfo(url);
+                currentPlaylistIndex = index;  // Changed from index - 1
+                isPlaying = true;
+                isPaused = false;
+                playButton.html('<ion-icon name="stop-outline"></ion-icon>Stop');
+                pauseButton.show();
+                
+                // If we're on playlist view, update the highlight
+                if (playlistView.is(':visible')) {
+                    renderPlaylist();
+                }
+            } else if (e.data.action === "playlistEnded") {
+                // Playlist has ended
+                isPlaying = false;
+                isPaused = false;
+                playButton.html('<ion-icon name="play-outline"></ion-icon>Play');
+                pauseButton.hide();
+                videoThumbnail.hide();
+                thumbnailPlaceholder.show();
+                videoTitle.text('');
+                $('#youtubeUrl').val('');
+                currentPlaylistIndex = -1;
+                
+                // Update playlist view if visible
+                if (playlistView.is(':visible')) {
+                    renderPlaylist();
+                }
+            }
+        });
+
+        volumeSlider.on('input', function () {
+            volumeInfo.text(`Volume: ${volumeSlider.val()}%`);
+        });
+
+        volumeSlider.on('change', function () {
+            volumeInfo.text(`Volume: ${volumeSlider.val()}%`);
+            fetchNui('changeVolume', { volume: volumeSlider.val() });
+        });
+
+        playButton.click(() => {
+            const youtubeUrl = $('#youtubeUrl').val().trim().replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+            if (isPlaying) {
+                isPlaying = false;
+                isPaused = false;
+                playButton.html('<ion-icon name="play-outline"></ion-icon>Play');
+                pauseButton.hide();
+                videoThumbnail.hide();
+                thumbnailPlaceholder.show();
+                videoTitle.text('');
+                addToPlaylistBtn.hide();
+                fetchNui('stopSound');
+                return;
+            }
+
+            if (!youtubeUrl || !youtubeUrl.match(/^(https?\:\/\/)?(www\.youtube\.com|youtu\.?be)\/.+$/)) {
+                return sendNotification({ title: "Please enter a valid YouTube URL!" });
+            }
+
+            isPlaying = true;
+            isPaused = false;
+            playButton.html('<ion-icon name="stop-outline"></ion-icon>Stop');
+            pauseButton.html('<ion-icon name="pause-outline"></ion-icon>Pause');
+            pauseButton.show();
+
+            updateVideoInfo(youtubeUrl);
+
+            fetchNui('playSound', { url: youtubeUrl });
+        });
+
+        pauseButton.click(() => {
+            if (!isPlaying) return;
+
+            isPaused = !isPaused;
+            if (isPaused) {
+                pauseButton.html('<ion-icon name="play-outline"></ion-icon>Resume');
+                fetchNui('pauseSound');
+            } else {
+                pauseButton.html('<ion-icon name="pause-outline"></ion-icon>Pause');
+                fetchNui('resumeSound');
+            }
+        });
+
+        // Stop button on playlist screen
+        $('#stopFromPlaylistBtn').click(() => {
+            isPlaying = false;
+            isPaused = false;
+            playButton.html('<ion-icon name="play-outline"></ion-icon>Play');
+            pauseButton.hide();
+            videoThumbnail.hide();
+            thumbnailPlaceholder.show();
+            videoTitle.text('');
+            addToPlaylistBtn.hide();
+            currentPlaylistIndex = -1;
+            $('#youtubeUrl').val('');
+            fetchNui('stopSound');
+            
+            // Re-render playlist to remove highlight and hide stop button
+            renderPlaylist();
+        });
+
+        // Notification helper
+        function sendNotification(data) {
+            fetchNui('notify', data);
+        }
+
+        // NUI helper
+        function fetchNui(event, data = {}) {
+            return fetch(`https://${resName}/${event}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json; charset=UTF-8",
+                },
+                body: JSON.stringify(data),
+            }).then(res => res.json());
+        }
+    </script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

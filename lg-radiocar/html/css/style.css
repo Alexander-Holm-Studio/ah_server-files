@@ -1,5 +1,6 @@
 /* This applies to all elements (bad practice) */
 * {
+	box-sizing: border-box;
 	color: #fff;
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 900;
@@ -34,6 +35,7 @@ body{
     left: 0;
     right: 0;
     margin: auto;
+    display: none;
 }
 
 #playCustom{

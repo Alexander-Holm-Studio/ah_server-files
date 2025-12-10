@@ -6,37 +6,32 @@
 		<link rel="stylesheet" href="css/style.css" type="text/css">
 		<script src="nui://game/ui/jquery.js" type="text/javascript"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link href="https://fonts.googleapis.com/css?family=Montserrat:100" rel="stylesheet">
-		<script src="https://kit.fontawesome.com/2ea5252f1d.js" crossorigin="anonymous"></script>
-		<script src="https://s.ytimg.com/yts/jsbin/www-widgetapi-vflJJaNgk/www-widgetapi.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 		<script src="https://www.youtube.com/iframe_api"></script>	
 		<script src="./scripts/vue.min.js"></script>	
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>		
 	</head>
 	<body id = "body" style = "background: transparent;">
 		<div id = "trash"></div>
 		<div id = "radio">
 			<div id = "useless">
-				<div id = "volume">100% </div>
+				<div id = "volume">{{ volume }}% </div>
 				<i class="fas fa-headphones"></i>
 			</div>	
 			<div id = "time">14:56</div>
 			
 			<div id = "playCustom" style = "display:none">
 				<p id = "status">Playing right now</p>
-				<p id = "nameSong">Nazef songu XD</p></br>			
+				<p id = "nameSong">{{ currentSong.label }}</p></br>			
 				<p id = "timeSong">2:34 / 3:56</p>
 				
 				<input type="text" id="url" name="url"></br>
-				<i id = "playSong" class="far fa-play-circle"></i>
+				<i id = "playSong" class="far fa-play-circle" @click="playCustom($('#url').val(), 'Custom')"></i>
 			</div>
 
 			<div id = "musicList">	
-				<div v-for="item, index in songs" class = "music">				
+				<div v-for="(item, index) in songs" class = "music">				
 					<i class="far fa-play-circle" v-on:click="playMusic(index)"></i>
-					<span class="glyphicon glyphicon-edit" v-on:click="showIndex(index)"></span>
+					<i class="fas fa-pen-to-square" v-on:click="showIndex(index)" style="cursor: pointer; margin-left: 10px;"></i>
 					<p>{{ item.label }}</p>
 				</div>	
 			</div>
@@ -46,7 +41,7 @@
 				<input type="text" id="AddName" name="name"></br>
 				<p style="position: relative;bottom: -8px;font-size: 17px;">URL for the song</p>
 				<input type="text" id="AddUrl" name="url"></br>
-				<span class="glyphicon glyphicon-wrench" onclick="editSong()"></span>
+				<i class="fas fa-wrench" v-on:click="saveSong()" style="cursor: pointer; font-size: 20px; margin-top: 10px;"></i>
 			</div>
 		
 			<div id = "menu">
@@ -69,8 +64,6 @@
 				</div>											
 			</div>
 		</div>
-		<script src="./scripts/config.js" type="text/javascript"></script>
-		<script src="./scripts/listener.js" type="text/javascript"></script>
-		<script src="./scripts/class.js" type="text/javascript"></script>
+		<script src="./scripts/app.js" type="text/javascript"></script>
 	</body>
 </html>

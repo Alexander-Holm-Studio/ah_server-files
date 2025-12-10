@@ -24,7 +24,6 @@ end
 function MySQLAsyncexecute(query, table, cb)
     return MySQL.Async.execute(query, table, cb)
 end
-
 --
 
 function IsVehiclePlayer(source, licensePlate, cb)
@@ -47,16 +46,14 @@ AddEventHandler("lg-radiocar:openUI", function(spz)
     local xPlayer = ESX.GetPlayerFromId(player)
 
     if Config.OnlyCarWhoHaveRadio then
-        if exports.lg - radiocar:HasCarRadio(spz) then
+        if exports.lg-radiocar:HasCarRadio(spz) then
             TriggerClientEvent("lg-radiocar:openUI", player)
         end
         return
     end
     if Config.OnlyOwnerOfTheCar then
         if not CachedOwners[spz] then
-            local result = MySQL.Sync.fetchAll(
-            "SELECT * FROM owned_vehicles WHERE plate = @plate AND owner = @identifier",
-                { ['@plate'] = spz, ['@identifier'] = xPlayer.identifier })
+            local result = MySQL.Sync.fetchAll("SELECT * FROM owned_vehicles WHERE plate = @plate AND owner = @identifier", { ['@plate'] = spz, ['@identifier'] = xPlayer.identifier })
             if #result ~= 0 then
                 TriggerClientEvent("lg-radiocar:openUI", player)
             end
@@ -66,8 +63,8 @@ AddEventHandler("lg-radiocar:openUI", function(spz)
                 TriggerClientEvent("lg-radiocar:openUI", player)
             end
         end
-        return
-    end
+		return
+	end
     if Config.OnlyOwnedCars then
         if not CachedOwners[spz] then
             local result = MySQL.Sync.fetchAll("SELECT * FROM owned_vehicles WHERE plate = @plate", { ['@plate'] = spz })
@@ -80,7 +77,7 @@ AddEventHandler("lg-radiocar:openUI", function(spz)
                 TriggerClientEvent("lg-radiocar:openUI", player)
             end
         end
-        return
+		return
     end
-    TriggerClientEvent("lg-radiocar:openUI", player)
+	TriggerClientEvent("lg-radiocar:openUI", player)
 end)
