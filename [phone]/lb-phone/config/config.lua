@@ -412,15 +412,20 @@ Config.FrameColor = "#39334d" -- This is the color of the phone frame. Default (
 Config.AllowFrameColorChange = true -- Allow players to change the color of their phone frame?
 
 Config.PhoneNumber = {}
-Config.PhoneNumber.Format = "({3}) {3}-{4}" -- Don't touch unless you know what you're doing. IMPORTANT: The sum of the numbers needs to be equal to the phone number length + prefix length
-Config.PhoneNumber.Length = 7 -- This is the length of the phone number WITHOUT the prefix.
-Config.PhoneNumber.Prefixes = { -- These are the first numbers of the phone number, usually the area code. They all need to be the same length
-    "205",
-    "907",
-    "480",
-    "520",
-    "602"
+Config.PhoneNumber.Format = "{2} {2} {2} {2}" -- Danish format: 8 digits grouped in pairs
+Config.PhoneNumber.Length = 8 -- Number length without prefix
+Config.PhoneNumber.Prefixes = { -- Common starting digits for Danish mobile numbers
+    "20", "21", "22", "23", "24", "25", "26", "27", "28", "29",
+    "30", "31", "32", "33", "34", "35", "36", "37", "38", "39",
+    "40", "41", "42", "43", "44", "45", "46", "47", "48", "49",
+    "50", "51", "52", "53", "54", "55", "56", "57", "58", "59",
+    "60", "61", "62", "63", "64", "65", "66", "67", "68", "69",
+    "70", "71", "72", "73", "74", "75", "76", "77", "78", "79",
+    "80", "81", "82", "83", "84", "85", "86", "87", "88", "89",
+    "90", "91", "92", "93", "94", "95", "96", "97", "98", "99"
 }
+
+
 
 Config.Battery = {} -- WITH THESE SETTINGS, A FULL CHARGE WILL LAST AROUND 2 HOURS.
 Config.Battery.Enabled = false -- Enable battery on the phone, you'll need to use the exports to charge it.

@@ -70,27 +70,27 @@ Config.Hospitals                 = {
 	Pillbox = {
 
 		Blip = {
-			coords = vector3(306.25, -597.86, 42.29),
+			coords = vector3(336.8170, -580.3730, 28.7969),
 			sprite = 61,
 			scale  = 1.2,
 			color  = 2
 		},
 
 		AmbulanceActions = {
-			vector3(306.25094604492, -597.86120605469, 42.29182434082)
+			vector3(336.8170, -580.3730, 28.7969)
 		},
 
 		Pharmacies = {
-			vector3(318.0285949707, -588.33038330078, 42.291835784912)
+			vector3(336.8170, -580.3730, 28.7969)
 		},
 
 		Vehicles = {
 			{
-				Spawner = vector3(295.21395374023, -604.45806884766, 42.313770294189),
-				InsideShop = vector4(295.21395374023, -604.45806884766, 42.313770294189, 0.0),
-				Marker = { type = 36, x = 1.0, y = 1.0, z = 1.0, r = 100, g = 50, b = 200, a = 100, rotate = true },
+				Spawner = vector3(336.8170, -580.3730, 28.3),
+				InsideShop = vector4(336.8170, -580.3730, 28.3, 332.3907),
+				Marker = { type = 36, x = 2.0, y = 2.0, z = 1.0, r = 100, g = 50, b = 200, a = 100, rotate = false },
 				SpawnPoints = {
-					{ coords = vector3(288.42230224609, -594.60400390625, 43.177055358887), heading = 0.0, radius = 4.0 }
+					{ coords = vector3(336.8170, -580.3730, 28.3), heading = 332.3907, radius = 4.0 }
 				}
 			}
 		},

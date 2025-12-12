@@ -2,9 +2,10 @@ local radioChannel = 0
 local radioNames = {}
 local disableRadioAnim = false
 local radioAnim = {
-	dict = "random@arrests",
-	anim = "generic_radio_enter",
+	dict = "anim@male@holding_radio",
+	anim = "holding_radio_clip",
 }
+local radioProp = nil
 
 ---@return boolean isEnabled if radioEnabled is true and LocalPlayer.state.disableRadio is 0 (no bits set)
 function isRadioEnabled()
@@ -48,9 +49,11 @@ RegisterNetEvent('pma-voice:syncRadioData', syncRadioData)
 function setTalkingOnRadio(plySource, enabled)
 	radioData[plySource] = enabled
 
-	if not isRadioEnabled() then return logger.info(
-		"[radio] Ignoring setTalkingOnRadio. radioEnabled: %s disableRadio: %s", radioEnabled,
-			LocalPlayer.state.disableRadio) end
+	if not isRadioEnabled() then
+		return logger.info(
+			"[radio] Ignoring setTalkingOnRadio. radioEnabled: %s disableRadio: %s", radioEnabled,
+			LocalPlayer.state.disableRadio)
+	end
 	-- If we're on a call we don't want to toggle their voice disabled this will break calls.
 	local enabled = enabled or callData[plySource]
 	toggleVoice(plySource, enabled, 'radio')
@@ -202,8 +205,6 @@ RegisterCommand('+radiotalk', function()
 			radioPressed = true
 			local shouldPlayAnimation = isRadioAnimEnabled()
 			playMicClicks(true)
-			-- localize here so in the off case someone changes this while its in use we
-			-- still remove our dictionary down below here
 			local dict = radioAnim.dict
 			local anim = radioAnim.anim
 			if shouldPlayAnimation then
@@ -220,9 +221,16 @@ RegisterCommand('+radiotalk', function()
 					end
 					if shouldPlayAnimation and HasAnimDictLoaded(dict) then
 						if not IsEntityPlayingAnim(PlayerPedId(), dict, anim, 3) then
-							TaskPlayAnim(PlayerPedId(), dict, anim, 8.0, 2.0, -1, 50, 2.0, false,
-								false,
-								false)
+							TaskPlayAnim(PlayerPedId(), dict, anim, 8.0, 2.0, -1, 50, 2.0, false, false, false)
+							if not radioProp or not DoesEntityExist(radioProp) then
+								local ped = PlayerPedId()
+								local coords = GetEntityCoords(ped)
+								radioProp = CreateObject(`prop_cs_hand_radio`, coords.x, coords.y, coords.z, true, true,
+									false)
+								AttachEntityToEntity(radioProp, ped, GetPedBoneIndex(ped, 28422), 0.0750, 0.0230, -0.0230,
+									-90.0, 0.0, -59.9999, true, true, false, true, 1, true)
+								SetModelAsNoLongerNeeded(`prop_cs_hand_radio`)
+							end
 						end
 					end
 					SetControlNormal(0, 249, 1.0)
@@ -230,7 +238,6 @@ RegisterCommand('+radiotalk', function()
 					SetControlNormal(2, 249, 1.0)
 					Wait(0)
 				end
-
 
 				if checkFailed then
 					logger.info("Canceling radio talking as the checks have failed.")
@@ -256,6 +263,10 @@ RegisterCommand('-radiotalk', function()
 		playMicClicks(false)
 		if GetConvarInt('voice_enableRadioAnim', 1) == 1 then
 			StopAnimTask(PlayerPedId(), radioAnim.dict, radioAnim.anim, -4.0)
+			if radioProp and DoesEntityExist(radioProp) then
+				DeleteObject(radioProp)
+				radioProp = nil
+			end
 		end
 		TriggerServerEvent('pma-voice:setTalkingOnRadio', false)
 	end

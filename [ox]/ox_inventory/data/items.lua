@@ -137,21 +137,21 @@ return {
 		label = 'Lockpick',
 		weight = 160,
 	},
-["phone"] = {
-    label = "Phone",
-    weight = 190,
-    stack = false,
-    consume = 0,
-    client = {
-        export = "lb-phone.UsePhoneItem",
-        remove = function()
-            TriggerEvent("lb-phone:itemRemoved")
-        end,
-        add = function()
-            TriggerEvent("lb-phone:itemAdded")
-        end
-    }
-},
+	["phone"] = {
+		label = "Phone",
+		weight = 190,
+		stack = false,
+		consume = 0,
+		client = {
+			export = "lb-phone.UsePhoneItem",
+			remove = function()
+				TriggerEvent("lb-phone:itemRemoved")
+			end,
+			add = function()
+				TriggerEvent("lb-phone:itemAdded")
+			end
+		}
+	},
 
 	['money'] = {
 		label = 'Money',
@@ -737,5 +737,11 @@ return {
 		close = true,
 		description = "Did you really think that swimming in the ocean with your phone was a good idea?",
 		client = { image = "wet_white_phone.png" }
+	},
+
+	['stevo_policebadge'] = {
+		label = 'Police Badge',
+		weight = 250,
+		stack = false,
 	},
 }

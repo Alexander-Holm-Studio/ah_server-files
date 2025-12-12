@@ -28,7 +28,6 @@ Config.OxInventory            = ESX.GetConfig().OxInventory
 Config.PoliceStations         = {
 
 	LSPD = {
-
 		Blip = {
 			Coords  = vector3(428.9, -984.5, 30.7), -- GABZ MRPD Main Entrance
 			Sprite  = 60,
@@ -36,7 +35,6 @@ Config.PoliceStations         = {
 			Scale   = 1.2,
 			Colour  = 29
 		},
-
 		Cloakrooms = {
 			vector3(452.6, -992.8, 30.6)
 		},
@@ -44,7 +42,6 @@ Config.PoliceStations         = {
 			vector3(479.7, -996.6, 30.7), -- GABZ MRPD Armory
 			vector3(453.1, -980.2, 30.7) -- GABZ MRPD Secondary Armory
 		},
-
 		Vehicles = {
 			{
 				Spawner = vector3(459.3575, -986.5589, 25.6998), -- Main garage spawner
@@ -56,17 +53,89 @@ Config.PoliceStations         = {
 					{ coords = vector3(445.71, -988.8, 25.36),  heading = 270.33, radius = 6.0 }
 				}
 			},
-
 			{
 				Spawner = vector3(473.3, -1018.8, 28.0), -- Side garage spawner
 				InsideShop = vector3(228.5, -993.5, -99.0),
 				SpawnPoints = {
 					{ coords = vector3(475.9, -1021.6, 28.0), heading = 276.1, radius = 6.0 },
 					{ coords = vector3(484.1, -1023.1, 27.5), heading = 302.5, radius = 6.0 }
+				},
+
+				PALETO = {
+					Blip = {
+						Coords  = vector3(-432.177, 6019.605, 31.490), -- Paleto Bay PD Main Entrance
+						Sprite  = 60,
+						Display = 4,
+						Scale   = 1.2,
+						Colour  = 29
+					},
+					Cloakrooms = {
+						vector3(-432.177, 6019.605, 31.490)
+					},
+					Armories = {
+						vector3(-432.177, 6019.605, 31.490)
+					},
+					Vehicles = {
+						{
+							Spawner = vector3(-432.177, 6019.605, 31.490),
+							InsideShop = vector3(-432.177, 6019.605, 31.490),
+							SpawnPoints = {
+								{ coords = vector3(-432.177, 6019.605, 31.490), heading = 90.0, radius = 6.0 }
+							}
+						}
+					},
+					Helicopters = {
+						{
+							Spawner = vector3(-432.177, 6019.605, 31.490),
+							InsideShop = vector3(-432.177, 6019.605, 31.490),
+							SpawnPoints = {
+								{ coords = vector3(-432.177, 6019.605, 31.490), heading = 0.0, radius = 10.0 }
+							}
+						}
+					},
+					BossActions = {
+						vector3(-432.177, 6019.605, 31.490)
+					}
+				},
+
+				SANDY = {
+					Blip = {
+						Coords  = vector3(1871.4530, 3664.9644, 33.6869), -- Sandy Shores PD Main Entrance
+						Sprite  = 60,
+						Display = 4,
+						Scale   = 1.2,
+						Colour  = 29
+					},
+					Cloakrooms = {
+						vector3(1871.4530, 3664.9644, 33.6869)
+					},
+					Armories = {
+						vector3(1871.4530, 3664.9644, 33.6869)
+					},
+					Vehicles = {
+						{
+							Spawner = vector3(1871.4530, 3664.9644, 33.6869),
+							InsideShop = vector3(1871.4530, 3664.9644, 33.6869),
+							SpawnPoints = {
+								{ coords = vector3(1871.4530, 3664.9644, 33.6869), heading = 210.0, radius = 6.0 }
+							}
+						}
+					},
+					Helicopters = {
+						{
+							Spawner = vector3(1871.4530, 3664.9644, 33.6869),
+							InsideShop = vector3(1871.4530, 3664.9644, 33.6869),
+							SpawnPoints = {
+								{ coords = vector3(1871.4530, 3664.9644, 33.6869), heading = 0.0, radius = 10.0 }
+							}
+						}
+					},
+					BossActions = {
+						vector3(1871.4530, 3664.9644, 33.6869)
+					}
 				}
 			}
 		},
-
 		Helicopters = {
 			{
 				Spawner = vector3(461.1, -981.5, 43.6), -- GABZ MRPD Helipad
@@ -76,13 +145,47 @@ Config.PoliceStations         = {
 				}
 			}
 		},
-
 		BossActions = {
 			vector3(459.8, -985.3, 30.7) -- GABZ MRPD Chief's Office
 		}
+	},
 
+	DAVISPD = {
+		Blip = {
+			Coords  = vector3(378.1, -1607.5, 29.3), -- Davis PD Main Entrance
+			Sprite  = 60,
+			Display = 4,
+			Scale   = 1.2,
+			Colour  = 29
+		},
+		Cloakrooms = {
+			vector3(374.2, -1607.6, 29.3)
+		},
+		Armories = {
+			vector3(379.5, -1609.0, 29.3)
+		},
+		Vehicles = {
+			{
+				Spawner = vector3(367.5, -1613.5, 29.3),
+				InsideShop = vector3(367.5, -1613.5, 29.3),
+				SpawnPoints = {
+					{ coords = vector3(367.5, -1613.5, 29.3), heading = 229.0, radius = 6.0 }
+				}
+			}
+		},
+		Helicopters = {
+			{
+				Spawner = vector3(381.0, -1584.0, 36.0),
+				InsideShop = vector3(381.0, -1584.0, 36.0),
+				SpawnPoints = {
+					{ coords = vector3(381.0, -1584.0, 36.0), heading = 0.0, radius = 10.0 }
+				}
+			}
+		},
+		BossActions = {
+			vector3(374.2, -1607.6, 29.3)
+		}
 	}
-
 }
 Config.AuthorizedWeapons      = {
 	recruit = {
@@ -217,46 +320,46 @@ Config.CustomPeds = {
 Config.Uniforms = {
 	recruit = {
 		male = {
-			tshirt_1 = 15,
-			tshirt_2 = 0, -- Undershirt
-			torso_1 = 287,
-			torso_2 = 0, -- Danish Police Jacket (EUP)
+			shoes_1 = 82,
+			shoes_2 = 0,
+			bproof_1 = 13,
+			bproof_2 = 0,
+			torso_1 = 44,
+			torso_2 = 0,
+			pants_1 = 49,
+			pants_2 = 0,
+			tshirt_1 = 154,
+			tshirt_2 = 0,
+			arms = 11,
 			decals_1 = 0,
 			decals_2 = 0,
-			arms = 1,
-			pants_1 = 130,
-			pants_2 = 0, -- Danish Police Pants (EUP)
-			shoes_1 = 25,
-			shoes_2 = 0, -- Black boots
-			helmet_1 = 117,
-			helmet_2 = 0, -- Danish Police Cap (EUP)
+			helmet_1 = -1,
+			helmet_2 = 0,
 			chain_1 = 0,
 			chain_2 = 0,
 			ears_1 = -1,
-			ears_2 = 0,
-			bproof_1 = 0,
-			bproof_2 = 0
+			ears_2 = 0
 		},
 		female = {
-			tshirt_1 = 14,
-			tshirt_2 = 0, -- Undershirt
-			torso_1 = 300,
-			torso_2 = 0, -- Danish Police Jacket (EUP Female)
+			shoes_1 = 82,
+			shoes_2 = 0,
+			bproof_1 = 13,
+			bproof_2 = 0,
+			torso_1 = 44,
+			torso_2 = 0,
+			pants_1 = 49,
+			pants_2 = 0,
+			tshirt_1 = 154,
+			tshirt_2 = 0,
+			arms = 11,
 			decals_1 = 0,
 			decals_2 = 0,
-			arms = 14,
-			pants_1 = 133,
-			pants_2 = 0, -- Danish Police Pants (EUP Female)
-			shoes_1 = 27,
-			shoes_2 = 0, -- Black boots
-			helmet_1 = 117,
-			helmet_2 = 0, -- Danish Police Cap (EUP)
+			helmet_1 = -1,
+			helmet_2 = 0,
 			chain_1 = 0,
 			chain_2 = 0,
 			ears_1 = -1,
-			ears_2 = 0,
-			bproof_1 = 0,
-			bproof_2 = 0
+			ears_2 = 0
 		}
 	},
 
