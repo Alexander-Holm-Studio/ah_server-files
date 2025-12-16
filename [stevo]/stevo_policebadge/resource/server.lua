@@ -1,8 +1,6 @@
 lib.versionCheck('stevoscriptsteam/stevo_policebadge')
-if not lib.checkDependency('stevo_lib', '1.6.7') then
-    error(
-        'You need to update stevo_lib to the latest version for stevo_policebadges.')
-end
+if not lib.checkDependency('stevo_lib', '1.6.7') then error('You need to update stevo_lib to the latest version for stevo_policebadges.') end
+print('stevo_policebadge is depreciated, you can be our new and vastly improved version on our tebex: store.stevoscripts.com')
 lib.locale()
 
 local stevo_lib = exports['stevo_lib']:import()
@@ -14,18 +12,18 @@ lib.callback.register("stevo_policebadge:retrieveInfo", function(source)
     local identifier = stevo_lib.GetIdentifier(source)
     local job = stevo_lib.GetPlayerJobInfo(source)
 
-
-    badge_data.rank = job.gradeName or "Unknown"
+    
+    badge_data.rank = job.gradeName  or "Unknown" 
 
     badge_data.name = stevo_lib.GetName(source)
-
-
+    
+    
     local table = MySQL.single.await('SELECT `image` FROM `stevo_badge_photos` WHERE `identifier` = ? LIMIT 1', {
         identifier
     })
-
+     
     badge_data.photo = table ~= nil and table.image or nil
-
+    
     return badge_data
 end)
 
@@ -37,13 +35,13 @@ lib.callback.register("stevo_policebadge:setBadgePhoto", function(source, photo)
         identifier
     })
 
-    local id
+    local id 
 
-    if not image then
+    if not image then 
         id = MySQL.insert.await('INSERT INTO `stevo_badge_photos` (identifier, image) VALUES (?, ?)', {
             identifier, photo
         })
-    else
+    else 
         id = MySQL.update.await('UPDATE `stevo_badge_photos` SET image = ? WHERE identifier = ?', {
             photo, identifier
         })
@@ -74,10 +72,8 @@ AddEventHandler('onResourceStart', function(resource)
         lib.print.info('[Stevo Scripts] Deployed database table for stevo_badge_photos')
     end
 
-    -- Usable item registration is now optional; badge can be shown with /badge command
-    if config.badge_item_name then
-        stevo_lib.RegisterUsableItem(config.badge_item_name, function(source)
-            TriggerClientEvent('stevo_policebadge:use', source)
-        end)
-    end
+    stevo_lib.RegisterUsableItem(config.badge_item_name, function(source)
+        TriggerClientEvent('stevo_policebadge:use', source)
+    end)
 end)
+

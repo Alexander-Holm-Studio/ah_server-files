@@ -198,7 +198,7 @@ return {
 	},
 
 	['armour'] = {
-		label = 'Bulletproof Vest',
+		label = 'Skudsikker Vest',
 		weight = 3000,
 		stack = false,
 		client = {

@@ -1,10 +1,6 @@
-if not lib.checkDependency('stevo_lib', '1.6.0') then
-    error(
-        'You need to update stevo_lib to the latest version for stevo_policebadges.')
-end
+if not lib.checkDependency('stevo_lib', '1.6.0') then error('You need to update stevo_lib to the latest version for stevo_policebadges.') end
 lib.locale()
-print(
-    'stevo_policebadge is depreciated, you can be our new and vastly improved version on our tebex: store.stevoscripts.com')
+print('stevo_policebadge is depreciated, you can be our new and vastly improved version on our tebex: store.stevoscripts.com')
 
 local config = lib.require('config')
 local stevo_lib = exports['stevo_lib']:import()
@@ -12,13 +8,20 @@ local CURRENTLY_USING_BADGE = false
 
 
 local function showBadge()
-    local ped = PlayerPedId()
-    local selectedWeapon = GetSelectedPedWeapon(ped)
-    if selectedWeapon ~= `WEAPON_UNARMED` then
-        stevo_lib.Notify('Du kan ikke vise dit skilt mens du holder et våben eller genstand!', 'error', 3000)
-        return
-    end
     CURRENTLY_USING_BADGE = true
+    local badge_data = lib.callback.await("stevo_policebadge:retrieveInfo", false)
+
+    SendNUIMessage({ type = "displayBadge", data = badge_data })
+
+    local players = lib.getNearbyPlayers(GetEntityCoords(PlayerPedId()), 3, false)
+    if #players > 0 then
+        local ply = {}
+        for i = 1, #players do
+            table.insert(ply, GetPlayerServerId(players[i].id))
+        end
+        TriggerServerEvent('stevo_policebadge:showbadge', badge_data, ply)
+    end
+
     lib.progressBar({
         duration = config.badge_show_time,
         label = locale('progress_label'),
@@ -34,71 +37,59 @@ local function showBadge()
         prop = {
             bone = 28422,
             model = "prop_fib_badge",
-            pos = vec3(0.0600, 0.0210, -0.0400),
-            rot = vec3(-90.00, -180.00, 78.999)
+            pos = vec3(0.0600,0.0210,-0.0400),
+            rot = vec3(-90.00,-180.00,78.999)
         },
     })
+
     CURRENTLY_USING_BADGE = false
 end
 
-
--- Modern: Add /badge command for police to show badge without needing an item
-RegisterCommand('badge', function()
+RegisterNetEvent('stevo_policebadge:use', function()
     local job, gang = stevo_lib.GetPlayerGroups()
     local swimming = IsPedSwimmingUnderWater(cache.ped)
     local incar = IsPedInAnyVehicle(cache.ped, true)
     local job_auth = false
-    for _, group in pairs(config.job_names) do
-        if group == job then
-            job_auth = true
-        end
-    end
-    if not job_auth then return stevo_lib.Notify(locale('not_police'), 'error', 3000) end
-    if swimming or incar then return stevo_lib.Notify(locale('not_now'), 'error', 3000) end
-    if CURRENTLY_USING_BADGE then return end
-    showBadge()
-end, false)
 
--- Optionally, keep the usable item event for backward compatibility, but it just calls showBadge for authorized jobs
-RegisterNetEvent('stevo_policebadge:use', function()
-    local job, gang = stevo_lib.GetPlayerGroups()
-    local job_auth = false
-    for _, group in pairs(config.job_names) do
-        if group == job then
+    
+    for _, group in pairs (config.job_names) do    
+        if group == job then 
             job_auth = true
         end
     end
+
     if not job_auth then return stevo_lib.Notify(locale('not_police'), 'error', 3000) end
+
+    if swimming or incar then return stevo_lib.Notify(locale('not_now'), 'error', 3000) end
+
     if CURRENTLY_USING_BADGE then return end
+
     showBadge()
 end)
 
-
+RegisterNetEvent('stevo_policebadge:displaybadge')
+AddEventHandler('stevo_policebadge:displaybadge', function(data)
+    SendNUIMessage({ type = "displayBadge", data = data })
+end)
 
 RegisterCommand(config.set_image_command, function()
     local job, gang = stevo_lib.GetPlayerGroups()
 
     local job_auth = false
 
-
-    for _, group in pairs(config.job_names) do
-        if group == job then
+    
+    for _, group in pairs (config.job_names) do    
+        if group == job then 
             job_auth = true
         end
     end
 
-    if not job_auth then
-        stevo_lib.Notify(locale('not_police'), 'error', 3000)
-        return
-    end
+    if not job_auth then stevo_lib.Notify(locale('not_police'), 'error', 3000) return end
 
 
-    local input = lib.inputDialog(locale('input_title'), { locale('input_text') })
-
-    if not input then
-        stevo_lib.Notify(locale('no_photo'), 'error', 3000)
-        return
-    end
+    local input = lib.inputDialog(locale('input_title'), {locale('input_text')})
+ 
+    if not input then stevo_lib.Notify(locale('no_photo'), 'error', 3000) return end
 
     local setBadge = lib.callback.await("stevo_policebadge:setBadgePhoto", false, input[1])
     if setBadge then

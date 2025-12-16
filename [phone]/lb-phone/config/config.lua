@@ -235,7 +235,19 @@ Config.Companies.Management = {
     Promote = true, -- if true, the boss can promote employees
 }
 
-Config.CustomApps = {} -- https://docs.lbscripts.com/phone/custom-apps/
+Config.CustomApps = {
+    -- add your custom apps here
+    -- {
+    --     name = "CustomApp",
+    --     icon = "https://example.com/icon.png",
+    --     color = "#ff0000",
+    --     description = "This is a custom app",
+    --     identifier = "CustomApp", -- unique identifier for the app, used for whitelisting/blacklisting
+    --     developer = "YourName",
+    --     version = "1.0.0",
+    --     url = "https://example.com",
+    -- }
+}
 
 Config.Valet = {}
 Config.Valet.Enabled = true -- allow players to get their vehicles from the phone
@@ -450,7 +462,7 @@ Config.CityName = "Los Santos" -- The name that's being used in the weather app 
 Config.RealTime = true -- if true, the time will use real life time depending on where the user lives, if false, the time will be the ingame time.
 Config.CustomTime = false -- NOTE: disable Config.RealTime if using this. you can set this to a function that returns custom time, as a table: { hour = 0-24, minute = 0-60 }
 
-Config.EmailDomain = "danishrp.dk"
+Config.EmailDomain = "socialrp.dk"
 Config.AutoCreateEmail = false -- should the phone automatically create an email for the player when they set up the phone?
 Config.DeleteMail = true -- allow players to delete mails in the mail app?
 Config.ConvertMailToMarkdown = false -- convert mails from html to markdown?
