@@ -74,8 +74,7 @@ const CharacterSelection: React.FC<CharacterSelectionProps> = ({ initialCharacte
     <div className="h-screen bg-[#161616F2] text-white w-[527px] border-r border-neutral-800 overflow-hidden animate-slideIn flex flex-col">
       <div className="p-4 flex-1 overflow-auto">
         <div className="flex flex-col items-center mb-6">
-          <img src={Logo} alt="SocialRP Logo" className="h-20 mb-3" />
-          <h1 className="text-[28px] font-bold tracking-wider text-[#fb9b04] mb-1">SocialRP</h1>
+          <img src={Logo} alt="Logo" className="h-16 mb-3" />
           <h2 className="text-[20px] font-semibold tracking-wide text-white">{locale.title}</h2>
         </div>
 

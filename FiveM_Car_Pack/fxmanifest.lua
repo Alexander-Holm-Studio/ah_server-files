@@ -29,5 +29,19 @@ files {
     'stream/sheriff2.yft',
     'stream/sheriff2_hi.yft',
     'stream/sheriff2.ytd',
-    'stream/sheriff2+hi.ytd'
+    'stream/sheriff2+hi.ytd',
+    'vcf/sheriff2.xml',
+    'vcf/sheriff.xml',
+    'vcf/sample_vcf.xml',
+    'vcf/pranger.xml',
+    'vcf/police4.xml',
+    'vcf/police3.xml',
+    'vcf/police2.xml',
+    'vcf/POLICE.xml',
+    'vcf/FBI2.xml',
+    'vcf/fbi.xml'
 }
+
+-- ELS: Add any ELS VCF/VCF-like XML files to the `files` list above (for example 'stream/your_vehicle.vcf')
+-- When ready, mark this resource as ELS-capable by ensuring the following line is present:
+is_els 'true'

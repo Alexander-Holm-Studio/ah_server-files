@@ -59,82 +59,8 @@ Config.PoliceStations         = {
 				SpawnPoints = {
 					{ coords = vector3(475.9, -1021.6, 28.0), heading = 276.1, radius = 6.0 },
 					{ coords = vector3(484.1, -1023.1, 27.5), heading = 302.5, radius = 6.0 }
-				},
-
-				PALETO = {
-					Blip = {
-						Coords  = vector3(-432.177, 6019.605, 31.490), -- Paleto Bay PD Main Entrance
-						Sprite  = 60,
-						Display = 4,
-						Scale   = 1.2,
-						Colour  = 29
-					},
-					Cloakrooms = {
-						vector3(-432.177, 6019.605, 31.490)
-					},
-					Armories = {
-						vector3(-432.177, 6019.605, 31.490)
-					},
-					Vehicles = {
-						{
-							Spawner = vector3(-432.177, 6019.605, 31.490),
-							InsideShop = vector3(-432.177, 6019.605, 31.490),
-							SpawnPoints = {
-								{ coords = vector3(-432.177, 6019.605, 31.490), heading = 90.0, radius = 6.0 }
-							}
-						}
-					},
-					Helicopters = {
-						{
-							Spawner = vector3(-432.177, 6019.605, 31.490),
-							InsideShop = vector3(-432.177, 6019.605, 31.490),
-							SpawnPoints = {
-								{ coords = vector3(-432.177, 6019.605, 31.490), heading = 0.0, radius = 10.0 }
-							}
-						}
-					},
-					BossActions = {
-						vector3(-432.177, 6019.605, 31.490)
-					}
-				},
-
-				SANDY = {
-					Blip = {
-						Coords  = vector3(1871.4530, 3664.9644, 33.6869), -- Sandy Shores PD Main Entrance
-						Sprite  = 60,
-						Display = 4,
-						Scale   = 1.2,
-						Colour  = 29
-					},
-					Cloakrooms = {
-						vector3(1871.4530, 3664.9644, 33.6869)
-					},
-					Armories = {
-						vector3(1871.4530, 3664.9644, 33.6869)
-					},
-					Vehicles = {
-						{
-							Spawner = vector3(1871.4530, 3664.9644, 33.6869),
-							InsideShop = vector3(1871.4530, 3664.9644, 33.6869),
-							SpawnPoints = {
-								{ coords = vector3(1871.4530, 3664.9644, 33.6869), heading = 210.0, radius = 6.0 }
-							}
-						}
-					},
-					Helicopters = {
-						{
-							Spawner = vector3(1871.4530, 3664.9644, 33.6869),
-							InsideShop = vector3(1871.4530, 3664.9644, 33.6869),
-							SpawnPoints = {
-								{ coords = vector3(1871.4530, 3664.9644, 33.6869), heading = 0.0, radius = 10.0 }
-							}
-						}
-					},
-					BossActions = {
-						vector3(1871.4530, 3664.9644, 33.6869)
-					}
 				}
-			}
+			},
 		},
 		Helicopters = {
 			{
@@ -147,6 +73,80 @@ Config.PoliceStations         = {
 		},
 		BossActions = {
 			vector3(459.8, -985.3, 30.7) -- GABZ MRPD Chief's Office
+		}
+	},
+
+	PALETO = {
+		Blip = {
+			Coords  = vector3(-432.177, 6019.605, 31.490), -- Paleto Bay PD Main Entrance
+			Sprite  = 60,
+			Display = 4,
+			Scale   = 1.2,
+			Colour  = 29
+		},
+		Cloakrooms = {
+			vector3(-432.177, 6019.605, 31.490)
+		},
+		Armories = {
+			vector3(-432.177, 6019.605, 31.490)
+		},
+		Vehicles = {
+			{
+				Spawner = vector3(-432.177, 6019.605, 31.490),
+				InsideShop = vector3(-432.177, 6019.605, 31.490),
+				SpawnPoints = {
+					{ coords = vector3(-432.177, 6019.605, 31.490), heading = 90.0, radius = 6.0 }
+				}
+			}
+		},
+		Helicopters = {
+			{
+				Spawner = vector3(-432.177, 6019.605, 31.490),
+				InsideShop = vector3(-432.177, 6019.605, 31.490),
+				SpawnPoints = {
+					{ coords = vector3(-432.177, 6019.605, 31.490), heading = 0.0, radius = 10.0 }
+				}
+			}
+		},
+		BossActions = {
+			vector3(-432.177, 6019.605, 31.490)
+		}
+	},
+
+	SANDY = {
+		Blip = {
+			Coords  = vector3(1871.4530, 3664.9644, 33.6869), -- Sandy Shores PD Main Entrance
+			Sprite  = 60,
+			Display = 4,
+			Scale   = 1.2,
+			Colour  = 29
+		},
+		Cloakrooms = {
+			vector3(1871.4530, 3664.9644, 33.6869)
+		},
+		Armories = {
+			vector3(1871.4530, 3664.9644, 33.6869)
+		},
+		Vehicles = {
+			{
+				Spawner = vector3(1871.4530, 3664.9644, 33.6869),
+				InsideShop = vector3(1871.4530, 3664.9644, 33.6869),
+				SpawnPoints = {
+					{ coords = vector3(1871.4530, 3664.9644, 33.6869), heading = 210.0, radius = 6.0 }
+				}
+			}
+		},
+		Helicopters = {
+			{
+				Spawner = vector3(1871.4530, 3664.9644, 33.6869),
+				InsideShop = vector3(1871.4530, 3664.9644, 33.6869),
+				SpawnPoints = {
+					{ coords = vector3(1871.4530, 3664.9644, 33.6869), heading = 0.0, radius = 10.0 }
+				}
+			}
+		},
+		BossActions = {
+			vector3(1871.4530, 3664.9644, 33.6869)
 		}
 	},
 
