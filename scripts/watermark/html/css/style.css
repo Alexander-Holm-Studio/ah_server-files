@@ -1,0 +1,175 @@
+/* Watermark styling for top-center overlay */
+.watermark {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 2.1rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.85), 0 1px 0 #000;
+  z-index: 9999;
+  letter-spacing: 1px;
+  opacity: 0.97;
+  pointer-events: none;
+  user-select: none;
+}
+
+.watermark-highlight {
+  color: #ffd700;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-right: 6px;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+}
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+body{
+  background: transparent !important;
+  opacity: 1.0;
+}
+h1{
+  text-shadow: 2px 2px 6px #000000;
+  margin-top: 0.4% !important;
+  margin-bottom: 0 !important;
+  font-size: 22px;
+  font-family: 'Arial', sans-serif;
+  color: white !important;
+}
+#timedisplay {
+  position: fixed;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+  z-index: 9999;
+  width: auto;
+  padding: 0 6px;
+}
+
+.player_slot {
+  color: #d9b24a; /* gold accent to match screenshot */
+  font-weight: 800;
+  margin-right: 8px;
+  font-size: 14px;
+  display: inline;
+  vertical-align: baseline;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.6);
+}
+.box {
+  background: transparent;
+  color: #fff;
+  padding: 0 6px;
+  border-radius: 0;
+  box-shadow: none;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Roboto', 'Arial', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+#logoer .logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#bottomLogo {
+  position: fixed;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+#timedisplay .logo {
+  width: 185px;
+  height: 30px;
+}
+
+#horario h3, #players h3 {
+  text-shadow: 0 1px 2px rgba(0,0,0,0.9);
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  font-weight: 700 !important;
+  color: rgba(255,255,255,0.98);
+  font-family: 'Oswald', 'Roboto', 'Arial', sans-serif;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1;
+  text-align: center;
+  letter-spacing: 0.2px;
+}
+
+#players h3 {
+  font-size: 12px;
+  opacity: 0.95;
+  margin-top: 6px !important;
+}
+
+#players h3 .count {
+  color: #d9b24a; /* gold accent to match screenshot */
+  font-weight: 800;
+  margin-right: 8px;
+  font-size: 14px;
+  display: inline;
+  vertical-align: baseline;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.6);
+}
+
+#players h3 .label {
+  color: rgba(255,255,255,0.96);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 1.6px;
+  margin-left: 6px;
+}
+
+#logoer span {
+  color: rgb(255, 0, 0) !important;
+  font-weight: 700 !important;
+}
+
+#logoer h1 {
+  text-shadow: 2px 2px 4px #000000;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 26px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400 !important;
+  color: white !important;
+  text-align: center;
+}
+
+#logoer img {
+  display: block;
+  max-width: 150px;
+  height: auto;
+}
+
+#bottomLogo img {
+  display: block;
+  max-width: 180px;
+  height: auto;
+  opacity: 0.5; /* more faded */
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,0.5)) saturate(0.95) contrast(0.98);
+}
+
+/* logo has no animation per request; keep it static and slightly faded */
+
+#logoer .active {
+  background-color: #717171;
+}
+
+#logoer .fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 2.0s;
+  animation-name: fade;
+  animation-duration: 2.0s;
+}
